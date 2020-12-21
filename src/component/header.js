@@ -60,6 +60,7 @@ class AppHeader extends Component {
               placeholder="Search City…"
               inputProps={{ 'aria-label': 'search' }}
               onKeyPress={this.handleChange}
+              placeholder = 'Press Enter to Load'
             />
          
           </div>
