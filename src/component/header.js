@@ -20,14 +20,20 @@ import WheatherHome from './wheather-home';
 
 class AppHeader extends Component {
   handleChange=(event)=>{
+    var key=event.keyCode || event.which;
+    if (key==13){
+      console.log('executed',event.target.value);
+      this.props.citySetter(event.target.value);
+    }
+   
     // let countryArr = CitiesAPIData.getCities();
-    console.log(this.props.attribute);
-    let self=this.props.attribute;
-    this.setState(
-      self.city = [event.target.value],
-      self.isLoading = true
-    )
-   console.log(this.props.dataLoader());
+    // console.log(this.props.attribute);
+    // let self=this.props.attribute;
+    // this.setState(
+    //   self.city = event.target.value,
+    //   self.isLoading = true
+    // )
+  //  console.log(this.props.dataLoader());
     //console.log([event.target.value]);
   }
   render() {
@@ -53,8 +59,9 @@ class AppHeader extends Component {
             <InputBase
               placeholder="Search City…"
               inputProps={{ 'aria-label': 'search' }}
-              onChange={this.handleChange}
+              onKeyPress={this.handleChange}
             />
+         
           </div>
           
         </Toolbar>

@@ -14,6 +14,15 @@ class WheatherHome extends Component{
             isLoading : true
         }
     }
+    setCity=(name)=>{
+        console.log(name)
+        this.setState({
+            city : name,
+            isLoading : true,
+            wheatherData :{}
+        });
+        this.getWheaterData();
+    }
     componentDidMount(){
         this.getWheaterData();
         console.log(this.state.wheatherData);
@@ -32,13 +41,10 @@ class WheatherHome extends Component{
             console.log(error);
         })
     }
-    onSearchLoad(){
-        this.getWheaterData();
-    }
     render(){
         return(
             <div>
-              <AppHeader attribute={this.state} dataLoader={this.onSearchLoad}/>
+              <AppHeader citySetter={this.setCity} />
 
               {
                 this.state.isLoading ? <CircularProgress  style={{margin: 200}}/> : 
